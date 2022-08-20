@@ -12,6 +12,18 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     list-style: none;
   }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  #root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    order: 1;
+    justify-content: space-between;
+  }
   body {
     font-family: 'Open Sans', sans-serif;
     font-size: 10px;

@@ -17,7 +17,7 @@ const MyAccount = () => {
         <S.MyAccountArticles>
           <S.MyAccountArticlesTitle>
             All Articles
-            <S.MyAccountNewArticleLink to="/">New article</S.MyAccountNewArticleLink>
+            <S.MyAccountNewArticleLink to="/new-article">New article</S.MyAccountNewArticleLink>
           </S.MyAccountArticlesTitle>
           <S.MyAccountArticlesTable>
             <S.MyAccountArticlesThead>

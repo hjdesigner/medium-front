@@ -8,7 +8,7 @@ export const categories = [
     text: 'Design',
   },
   {
-    id: 1,
+    id: 3,
     text: 'Engineering',
   },
 ];
