@@ -5,6 +5,9 @@ import { Footer, Header } from 'components';
 const HomeTemplate = React.lazy(
   () => import('pages/home'),
 );
+const MyAccountTemplate = React.lazy(
+  () => import('pages/myAccount'),
+);
 
 function Main() {
   return (
@@ -12,6 +15,7 @@ function Main() {
       <Header />
       <Routes>
         <Route path="/" element={<HomeTemplate />} />
+        <Route path="/my-account" element={<MyAccountTemplate />} />
       </Routes>
       <Footer />
     </Suspense>

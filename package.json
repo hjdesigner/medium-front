@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@styled-icons/boxicons-solid": "^10.38.0",
+    "@styled-icons/material": "^10.34.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
@@ -14,6 +16,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.5",
+    "styled-icons": "^10.45.0",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },

@@ -12,7 +12,7 @@ const Header = () => {
               <S.HeaderNavLink to="/">My Bookmarks</S.HeaderNavLink>
             </S.HeaderNavLi>
             <S.HeaderNavLi>
-              <S.HeaderNavLink to="/">My Account</S.HeaderNavLink>
+              <S.HeaderNavLink to="/my-account">My Account</S.HeaderNavLink>
             </S.HeaderNavLi>
           </S.HeaderNavUl>
         </S.HeaderNav>
