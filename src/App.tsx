@@ -1,29 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { theme } from 'utils';
+
+const MainPage = lazy(() => import('pages/main'));
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.tsx</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <MainPage />
+        </ThemeProvider>
+      </BrowserRouter>
+    </Suspense>
   );
 }
 
