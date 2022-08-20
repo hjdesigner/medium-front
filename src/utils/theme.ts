@@ -5,6 +5,7 @@ export type themeProps = {
     blackLight: string;
     black: string;
     blue: string;
+    beige: string;
   },
   spaces: {
     small: string;
@@ -33,6 +34,7 @@ export const theme = {
     blackLight: '#54565d',
     black: '#000',
     blue: '#3f53d8',
+    beige: '#f7f4f2',
   },
   spaces: {
     small: '8px',
