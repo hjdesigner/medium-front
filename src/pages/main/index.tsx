@@ -11,6 +11,9 @@ const MyAccountTemplate = React.lazy(
 const NewArticleTemplate = React.lazy(
   () => import('pages/newArticle'),
 );
+const ArticleTemplate = React.lazy(
+  () => import('pages/article'),
+);
 
 function Main() {
   return (
@@ -20,6 +23,7 @@ function Main() {
         <Route path="/" element={<HomeTemplate />} />
         <Route path="/my-account" element={<MyAccountTemplate />} />
         <Route path="/new-article" element={<NewArticleTemplate />} />
+        <Route path="/article/:id" element={<ArticleTemplate />} />
       </Routes>
       <Footer />
     </Suspense>
