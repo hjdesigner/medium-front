@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export const HeaderElement = styled.header`
   width: 100%;
   box-shadow: rgb(233 220 211 / 40%) 0px 2px 10px 0px;
+  position: relative;
   
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
@@ -27,7 +28,7 @@ export const HeaderLogo = styled.span`
   ${({ theme }) => css`
     font-size: ${theme.fontSizes.fz1};
     color: ${theme.colors.redLight};
-    font-weight: 800;
+    font-weight: 700;
 
     @media screen and (min-width: 768px) {
       font-size: ${theme.fontSizes.fz3};

@@ -43,7 +43,8 @@
           "unnamedComponents": "arrow-function"
         }
       ],
-      "arrow-body-style": "off"
+      "arrow-body-style": "off",
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.tsx", "**/*.spec.tsx", "./src/utils/helperTest.tsx"]}]
     },
     "settings": { 
       "import/resolver": { 

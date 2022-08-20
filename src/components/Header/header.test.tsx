@@ -1,13 +1,10 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { theme } from 'utils';
+import { screen } from '@testing-library/react';
+import { renderWithTheme } from 'utils/helperTest';
 import Header from './index';
 
 describe('Testing Header', () => {
 	it('Header', () => {
-    render(<BrowserRouter><ThemeProvider theme={theme}><Header /></ThemeProvider></BrowserRouter>);
+    renderWithTheme(<Header />);
     expect(screen.getByText(/medium/i)).toBeInTheDocument();
     expect(screen.getByRole('link', {
       name: /my bookmarks/i
