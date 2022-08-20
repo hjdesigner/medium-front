@@ -44,7 +44,9 @@
         }
       ],
       "arrow-body-style": "off",
-      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.tsx", "**/*.spec.tsx", "./src/utils/helperTest.tsx"]}]
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.tsx", "**/*.spec.tsx", "./src/utils/helperTest.tsx"]}],
+      "no-empty-function": "off",
+      "@typescript-eslint/no-empty-function": "off"
     },
     "settings": { 
       "import/resolver": { 

@@ -15,11 +15,18 @@ export const HomeContainer = styled.main`
     padding: 0 ${theme.spaces.small};
   `}
 `;
-export const HomeArticlesFeature = styled.section``;
+export const HomeArticlesFeature = styled.section`
+  ${({ theme }) => css`
+    margin-bottom: ${theme.spaces.extraLarge};
+    display: inline-block;
+    width: 100%;
+  `}
+`;
 export const HomeArticlesContainer = styled.section`
 
   ${({ theme }) => css`
-    margin-top: ${theme.spaces.extraLarge};
+    margin: ${theme.spaces.extraLarge} 0;
+    display: inline-block;
   `}
 
 `;
@@ -40,5 +47,44 @@ export const HomeArticlesli = styled.li`
         margin-left: 6%;
       } 
     }
+  `}
+`;
+export const HomeCategories = styled.section`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: ${theme.spaces.extraLarge} 0;
+  `}
+`;
+export const HomeCategoriesUl = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+`;
+export const HomeCategoriesTitle = styled.p`
+  ${({ theme }) => css`
+    font-size: ${theme.fontSizes.fz1};
+    color: ${theme.colors.black};
+    font-weight: 600;
+    margin-bottom: ${theme.spaces.medium};
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+      width: auto;
+      margin-bottom: 0;
+      margin-right: ${theme.spaces.medium};
+    }
+  `}
+`;
+export const HomeCategoriesLi = styled.li`
+  ${({ theme }) => css`
+    margin-right: ${theme.spaces.small};
+  `}
+`;
+export const HomeLoadMore = styled.section`
+  ${({ theme }) => css`
+    margin: ${theme.spaces.extraLarge} 0;
+    display: flex;
+    justify-content: center;
   `}
 `;
