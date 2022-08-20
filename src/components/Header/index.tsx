@@ -5,11 +5,11 @@ const Header = () => {
   return (
     <S.HeaderElement>
       <S.HeaderContainer>
-        <S.HeaderLogo>Medium</S.HeaderLogo>
+        <S.HeaderLogo to="/">Medium</S.HeaderLogo>
         <S.HeaderNav>
           <S.HeaderNavUl>
             <S.HeaderNavLi>
-              <S.HeaderNavLink to="/">My Bookmarks</S.HeaderNavLink>
+              <S.HeaderNavLink to="/my-bookmarkes">My Bookmarks</S.HeaderNavLink>
             </S.HeaderNavLi>
             <S.HeaderNavLi>
               <S.HeaderNavLink to="/my-account">My Account</S.HeaderNavLink>

@@ -19,7 +19,7 @@ const Home = () => {
         </S.HomeCategories>
         <S.HomeArticlesContainer>
           <S.HomeArticlesUl>
-            {articles.map((item) => <S.HomeArticlesli><ArticleCard item={item} size="small" key={item.id} /></S.HomeArticlesli>)}
+            {articles.map((item) => <S.HomeArticlesli key={item.id}><ArticleCard item={item} size="small" /></S.HomeArticlesli>)}
           </S.HomeArticlesUl>
         </S.HomeArticlesContainer>
         <S.HomeLoadMore>

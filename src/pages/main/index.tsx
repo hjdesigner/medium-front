@@ -14,6 +14,9 @@ const NewArticleTemplate = React.lazy(
 const ArticleTemplate = React.lazy(
   () => import('pages/article'),
 );
+const MyBookmarksTemplate = React.lazy(
+  () => import('pages/myBookmarks'),
+);
 
 function Main() {
   return (
@@ -24,6 +27,7 @@ function Main() {
         <Route path="/my-account" element={<MyAccountTemplate />} />
         <Route path="/new-article" element={<NewArticleTemplate />} />
         <Route path="/article/:id" element={<ArticleTemplate />} />
+        <Route path="/my-bookmarkes" element={<MyBookmarksTemplate />} />
       </Routes>
       <Footer />
     </Suspense>

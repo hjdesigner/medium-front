@@ -23,13 +23,13 @@ export const HeaderContainer = styled.div`
     padding: 0 ${theme.spaces.small};
   `}
 `;
-export const HeaderLogo = styled.span`
-
+export const HeaderLogo = styled(Link)`
   ${({ theme }) => css`
     font-size: ${theme.fontSizes.fz1};
     color: ${theme.colors.redLight};
     font-weight: 700;
-
+    text-decoration: none;
+    
     @media screen and (min-width: 768px) {
       font-size: ${theme.fontSizes.fz3};
     }

@@ -11,7 +11,7 @@ const MyAccount = () => {
         <S.MyAccountUser>
           <S.MyAccountUserTitle>Hi Fulano</S.MyAccountUserTitle>
           <S.MyAccountUserText>
-            Welcome to the administration area, here you can view, create, edit or delete an article
+            Welcome to the administrator area, here you can view, create, edit or delete an article
           </S.MyAccountUserText>
         </S.MyAccountUser>
         <S.MyAccountArticles>
