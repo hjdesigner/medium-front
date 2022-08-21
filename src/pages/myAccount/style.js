@@ -147,3 +147,9 @@ export const MyAccountArticlesActionsButton = styled.button`
     }
   `}
 `;
+export const MyAccountLevel = styled.div`
+  width: 100%;
+  max-width: 250px;
+  display: flex;
+  justify-content: space-between;
+`;
