@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useUser } from 'hooks';
 import { Button } from 'components';
 import { categories } from 'mocks/categories';
 import * as S from './style';
 
 const NewArticle = () => {
+  const { isAuthenticated, user } = useAuth0();
+  const { validateIsLogin } = useUser();
+
+  useEffect(() => {
+    validateIsLogin(isAuthenticated, user);
+  }, []);
   return (
     <S.NewArticleElement>
       <S.NewArticleContainer>

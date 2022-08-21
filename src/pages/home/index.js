@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ArticleCard, Button } from 'components';
+import { useAuth0 } from '@auth0/auth0-react';
 import { articles } from 'mocks/articles';
 import { categories } from 'mocks/categories';
+import { useUser } from 'hooks';
 import * as S from './style';
 
+
 const Home = () => {
+  const { isAuthenticated, user } = useAuth0();
+  const { validateIsLogin } = useUser();
+
+  useEffect(() => {
+    validateIsLogin(isAuthenticated, user);
+  }, []);
+
   return (
     <S.HomeElement>
       <S.HomeContainer>

@@ -1,17 +1,8 @@
 import React from 'react';
+import { object, string } from 'prop-types';
 import * as S from './style';
 
-export type ArticleCardProps = {
-  item: {
-    title: string;
-    resume: string;
-    link: string;
-    image: string;
-  };
-  size: 'small' | 'large';
-};
-
-const ArticleCard = ({ item, size } : ArticleCardProps) => {
+const ArticleCard = ({ item, size }) => {
   return (
     <S.ArticleElement>
       <S.ArticleContext size={size} data-testid="content">
@@ -26,6 +17,11 @@ const ArticleCard = ({ item, size } : ArticleCardProps) => {
       </S.ArticleImagemContainer>
     </S.ArticleElement>
   );
+};
+
+ArticleCard.propTypes = {
+	item: object.isRequired,
+	size: string.isRequired,
 };
 
 export default ArticleCard;

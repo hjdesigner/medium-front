@@ -1,33 +1,3 @@
-export type themeProps = {
-  colors: {
-    white: string;
-    redLight: string;
-    blackLight: string;
-    black: string;
-    blue: string;
-    beige: string;
-    gray: string;
-  },
-  spaces: {
-    small: string;
-    medium: string;
-    large: string;
-    xLarge: string;
-    xxLarge: string;
-    extraLarge: string;
-  },
-  fonts: string[],
-  fontSizes: {
-    fz0: string;
-    fz1: string;
-    fz2: string;
-    fz3: string;
-    fz4: string;
-    fz5: string;
-    fz6: string;
-  },
-}
-
 export const theme = {
   colors: {
     white: '#FFF',

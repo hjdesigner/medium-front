@@ -1,10 +1,5 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { themeProps } from 'utils/theme';
-
-type SizeProps = {
-  size: 'small' | 'large'
-}
 
 const modifiers = {
   smallImage: () => css`
@@ -15,7 +10,7 @@ const modifiers = {
     height: 400px;
     order: 2;
   `,
-  positionSmallContent: (theme: themeProps) => css`
+  positionSmallContent: (theme) => css`
     padding-left: 0;
     order: 2;
 
@@ -23,7 +18,7 @@ const modifiers = {
       padding-left: ${theme.spaces.large};
     }
   `,
-  positionLargeContent: (theme: themeProps) => css`
+  positionLargeContent: (theme) => css`
     margin-bottom: ${theme.spaces.large};
     padding-right: 0;
     order: 1;
@@ -33,25 +28,25 @@ const modifiers = {
       margin-bottom: 0;
     }
   `,
-  smallTitle: (theme: themeProps) => css`
+  smallTitle: (theme) => css`
     font-size: ${theme.fontSizes.fz2};
     margin: ${theme.spaces.medium} 0;
   `,
-  largeTitle: (theme: themeProps) => css`
+  largeTitle: (theme) => css`
     font-size: ${theme.fontSizes.fz5};
     margin: ${theme.spaces.large} 0;
   `,
-  smallText: (theme: themeProps) => css`
+  smallText: (theme) => css`
     font-size: ${theme.fontSizes.fz0};
   `,
-  largeText: (theme: themeProps) => css`
+  largeText: (theme) => css`
     font-size: ${theme.fontSizes.fz1};
   `,
-  smallLink: (theme: themeProps) => css`
+  smallLink: (theme) => css`
     padding: ${theme.spaces.small};
     font-size: ${theme.fontSizes.fz0};
   `,
-  largeLink: (theme: themeProps) => css`
+  largeLink: (theme) => css`
     padding: ${theme.spaces.medium};
     font-size: ${theme.fontSizes.fz1};
   `,
@@ -67,21 +62,21 @@ export const ArticleElement = styled.div`
     flex-direction: row;
   }
 `;
-export const ArticleTitle = styled.h2<SizeProps>`
+export const ArticleTitle = styled.h2`
   ${({ theme, size }) => css`
     ${size === 'large' ? modifiers.largeTitle(theme) : modifiers.smallTitle(theme)};
     color: ${theme.colors.black};    
     font-weight: 600;
   `}
 `;
-export const ArticleResume = styled.p<SizeProps>`
+export const ArticleResume = styled.p`
   ${({ theme, size }) => css`
     ${size === 'large' ? modifiers.largeText(theme) : modifiers.smallText(theme)};
     color: ${theme.colors.black};
     font-weight: 400;
   `}
 `;
-export const ArticleButton = styled(Link)<SizeProps>`
+export const ArticleButton = styled(Link)`
   ${({ theme, size }) => css`
     color: ${theme.colors.white};
     background-color: ${theme.colors.blue};
@@ -110,12 +105,12 @@ export const ArticleImage = styled.img`
   object-position: center;
   border-radius: 8px;
 `;
-export const ArticleContext = styled.div<SizeProps>`
+export const ArticleContext = styled.div`
   ${({ theme, size }) => css`
     ${size === 'large' ? modifiers.positionLargeContent(theme) : modifiers.positionSmallContent(theme)};
   `}
 `;
-export const ArticleImagemContainer = styled.div<SizeProps>`
+export const ArticleImagemContainer = styled.div`
   position: relative;
   display: block;
   width: 100%;

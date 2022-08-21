@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useUser } from 'hooks';
 import { articles } from 'mocks/articles';
 import { EditLocation } from '@styled-icons/boxicons-solid';
 import { Delete } from '@styled-icons/material';
 import * as S from './style';
 
 const MyAccount = () => {
+  const { isAuthenticated, user } = useAuth0();
+  const { validateIsLogin, userInfo } = useUser();
+
+  useEffect(() => {
+    validateIsLogin(isAuthenticated, user);
+  }, []);
   return (
     <S.MyAccountElement>
       <S.MyAccountContainer>
         <S.MyAccountUser>
-          <S.MyAccountUserTitle>Hi Fulano</S.MyAccountUserTitle>
+          <S.MyAccountUserTitle>Hi {userInfo?.given_name} {userInfo?.family_name}</S.MyAccountUserTitle>
           <S.MyAccountUserText>
             Welcome to the administrator area, here you can view, create, edit or delete an article
           </S.MyAccountUserText>

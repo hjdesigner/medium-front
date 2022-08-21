@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useUser } from 'hooks';
 import { sanitize } from 'dompurify';
 import { articles } from 'mocks/articles';
 import * as S from './style';
 
 const Article = () => {
+  const { isAuthenticated, user } = useAuth0();
+  const { validateIsLogin } = useUser();
+
+  useEffect(() => {
+    validateIsLogin(isAuthenticated, user);
+  }, []);
+
   return (
     <S.ArticleElement>
       <S.ArticleContainer>

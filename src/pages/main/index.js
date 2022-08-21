@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Footer, Header } from 'components';
+import { Footer, Header, Loader } from 'components';
 
 const HomeTemplate = React.lazy(
   () => import('pages/home'),
@@ -17,10 +17,14 @@ const ArticleTemplate = React.lazy(
 const MyBookmarksTemplate = React.lazy(
   () => import('pages/myBookmarks'),
 );
+const LoginTemplate = React.lazy(
+  () => import('pages/login'),
+);
 
 function Main() {
+  
   return (
-    <Suspense fallback="Carregando...">
+    <Suspense fallback={<Loader />}>
       <Header />
       <Routes>
         <Route path="/" element={<HomeTemplate />} />
@@ -28,6 +32,7 @@ function Main() {
         <Route path="/new-article" element={<NewArticleTemplate />} />
         <Route path="/article/:id" element={<ArticleTemplate />} />
         <Route path="/my-bookmarkes" element={<MyBookmarksTemplate />} />
+        <Route path="/login" element={<LoginTemplate />} />
       </Routes>
       <Footer />
     </Suspense>

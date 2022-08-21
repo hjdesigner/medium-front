@@ -1,7 +1,10 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from 'utils';
+import { UserProvider } from 'context';
+import { Loader } from 'components';
 
 const MainPage = lazy(() => import('pages/main'));
 
@@ -31,12 +34,20 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
+  const { isLoading } = useAuth0();
+    
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
-      <BrowserRouter>
+    <Suspense fallback={<Loader />}>
+      <BrowserRouter>        
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <MainPage />
+          <UserProvider>
+            <MainPage />
+          </UserProvider>          
         </ThemeProvider>
       </BrowserRouter>
     </Suspense>

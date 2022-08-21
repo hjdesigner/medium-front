@@ -1,12 +1,7 @@
 import styled, { css } from 'styled-components';
-import { themeProps } from 'utils/theme';
-
-type FormatProps = {
-  format: 'primary' | 'secondary'
-}
 
 const modifiers = {
-  primary: (theme: themeProps) => css`
+  primary: (theme) => css`
     border-radius: 18px;
     background-color: ${theme.colors.white};
     padding: ${theme.spaces.small} ${theme.spaces.medium};
@@ -21,7 +16,7 @@ const modifiers = {
       border-color: ${theme.colors.blue};
     }
   `,
-  secondary: (theme: themeProps) => css`
+  secondary: (theme) => css`
     color: ${theme.colors.white};
     background-color: ${theme.colors.blue};
     border-radius: 5px;
@@ -36,7 +31,7 @@ const modifiers = {
   `,
 };
 
-export const ButtonElement = styled.button<FormatProps>`
+export const ButtonElement = styled.button`
   ${({ theme, format }) => css`
     cursor: pointer;
     ${format === 'primary' ? modifiers.primary(theme) : modifiers.secondary(theme)};
