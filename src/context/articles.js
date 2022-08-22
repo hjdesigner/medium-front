@@ -1,7 +1,7 @@
 import React, { useState, createContext } from 'react';
 import { element } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { postArticle, getAllArticle } from 'utils';
+import { postArticle, getAllArticle, deleteArticle, getIsAdmin } from 'utils';
 
 const ArticlesContext = createContext();
 
@@ -45,9 +45,24 @@ function ArticlesProvider({ children }) {
   }
 
   const requestArticles = async (sub) => {
-    const response = await getAllArticle(sub);
+    const responseIsAdmin = await getIsAdmin(sub);
+    if (responseIsAdmin && responseIsAdmin[0].isAdmin === true) {
+      const responseArticle = await getAllArticle('');
+      if (responseArticle) {
+        setArticles(responseArticle);
+      }
+    } else {
+      const response = await getAllArticle(sub);
+      if (response) {
+        setArticles(response);
+      }
+    }    
+  }
+
+  const requestDeletArticle = async (id, sub) => {
+    const response = await deleteArticle(id);
     if (response) {
-      setArticles(response);
+      requestArticles(sub);
     }
   }
 
@@ -69,6 +84,7 @@ function ArticlesProvider({ children }) {
         changeCategory,
         handleSubmit,
         requestArticles,
+        requestDeletArticle,
       }}
     >
       {children}

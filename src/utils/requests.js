@@ -50,8 +50,20 @@ export const postArticle = async (data) => {
 }
 export const getAllArticle = async (sub) => {
   try {
-    const url = sub === '' ? `articles?sub=${sub}` : 'articles';
+    const url = sub !== '' ? `articles?sub=${sub}` : 'articles';
     const response = await axios.get(`${process.env.REACT_APP_API}${url}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}
+export const deleteArticle = async (id) => {
+  try {
+    const response = await axios.delete(`${process.env.REACT_APP_API}articles/${id}`, {
       headers: {
         'Content-Type': 'application/json'
       }

@@ -39,10 +39,11 @@ function UserProvider({ children }) {
     if (response && response.length) {
       setIsAdmin({
         status: true,
-        isAdmin: response.isAdmin,
+        isAdmin: response[0].isAdmin,
       })
     }
     setLoadingIsLogin(false);
+    return isAdmin;
   }
 
   return (

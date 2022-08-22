@@ -16,12 +16,12 @@ const MyAccount = () => {
     validateIsAdmin,
     validateIsLogin,
   } = useUser();
-  const { requestArticles, articles } = useArticles();
+  const { requestArticles, articles, requestDeletArticle } = useArticles();
 
   useEffect(() => {
     validateIsLogin(isAuthenticated, user);
     validateIsAdmin(user.sub);
-    requestArticles(isAdmin?.status ? '' : user.sub);
+    requestArticles(user.sub);
   }, []);
 
   const handleIsAdmin = async (value) => {
@@ -82,7 +82,7 @@ const MyAccount = () => {
                               <EditLocation />
                             </S.MyAccountArticlesActionsButton>
                             <S.MyAccountArticlesActionsButton>
-                              <Delete />
+                              <Delete onClick={() => requestDeletArticle(item.id, isAdmin?.isAdmin ? '' : user.sub)} />
                             </S.MyAccountArticlesActionsButton>
                           </S.MyAccountArticlesActions>
                         </S.MyAccountArticlesContentTh>

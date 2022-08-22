@@ -18,9 +18,9 @@ const Header = () => {
             <S.HeaderNavLi>
               <S.HeaderNavLink to="/my-account">My Account</S.HeaderNavLink>
             </S.HeaderNavLi>
-            {userInfo?.given_name && userInfo?.family_name && (
+            {userInfo?.sub && (
               <S.HeaderNavLi>
-                <S.HeaderName>Hi {userInfo?.given_name} {userInfo?.family_name}</S.HeaderName>
+                {userInfo?.given_name && userInfo?.family_name && <S.HeaderName>Hi {userInfo?.given_name} {userInfo?.family_name}</S.HeaderName>}
                 <S.HeaderLogout onClick={() => logout({ returnTo: window.location.origin })}>logout</S.HeaderLogout>
               </S.HeaderNavLi>
             )}            
