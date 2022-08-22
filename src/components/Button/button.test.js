@@ -42,4 +42,20 @@ describe('Testing Button', () => {
       "transition": "background-color .25s ease-in-out",
     });
   });
+  it('should render the disable button', () => {
+    renderWithTheme(<Button disabled={true} format="secondary" handleClick={() => {}}>Frontend</Button>);
+
+    expect(screen.getByRole('button', {
+      name: /frontend/i
+    })).toHaveStyle({
+        "cursor": "default",
+        "color": "#FFF",
+        "background-color": "#ccc",
+        "border-radius": "5px",
+        "border": 0,
+        "padding": "16px 24px",
+        "font-size": "1rem",
+        "transition": "background-color .25s ease-in-out",
+    });
+  });
 });

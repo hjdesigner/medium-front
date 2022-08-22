@@ -6,7 +6,7 @@ export const theme = {
     black: '#000',
     blue: '#3f53d8',
     beige: '#f7f4f2',
-    gray: '#e8e8e8',
+    gray: '#ccc',
   },
   spaces: {
     small: '8px',

@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from 'utils';
-import { UserProvider } from 'context';
+import { UserProvider, CategoriesProvider, ArticlesProvider } from 'context';
 import { Loader } from 'components';
 
 const MainPage = lazy(() => import('pages/main'));
@@ -46,7 +46,11 @@ function App() {
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <UserProvider>
-            <MainPage />
+            <CategoriesProvider>
+              <ArticlesProvider>
+                <MainPage />
+              </ArticlesProvider>              
+            </CategoriesProvider>            
           </UserProvider>          
         </ThemeProvider>
       </BrowserRouter>

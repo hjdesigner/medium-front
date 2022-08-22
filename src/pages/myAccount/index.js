@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useUser } from 'hooks';
-import { articles } from 'mocks/articles';
+import { useUser, useArticles } from 'hooks';
 import { EditLocation } from '@styled-icons/boxicons-solid';
 import { Delete } from '@styled-icons/material';
 import { Button } from 'components';
@@ -17,10 +16,12 @@ const MyAccount = () => {
     validateIsAdmin,
     validateIsLogin,
   } = useUser();
+  const { requestArticles, articles } = useArticles();
 
   useEffect(() => {
     validateIsLogin(isAuthenticated, user);
     validateIsAdmin(user.sub);
+    requestArticles(isAdmin?.status ? '' : user.sub);
   }, []);
 
   const handleIsAdmin = async (value) => {

@@ -35,5 +35,10 @@ export const ButtonElement = styled.button`
   ${({ theme, format }) => css`
     cursor: pointer;
     ${format === 'primary' ? modifiers.primary(theme) : modifiers.secondary(theme)};
+
+    &:disabled {
+      background-color: ${theme.colors.gray};
+      cursor: default;
+    }
   `};
 `;

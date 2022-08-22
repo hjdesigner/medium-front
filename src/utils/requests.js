@@ -24,3 +24,40 @@ export const getIsAdmin = async (id) => {
     return false
   }
 }
+export const getCategories = async () => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API}categories`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}
+export const postArticle = async (data) => {
+  try {
+    const response = await axios.post(`${process.env.REACT_APP_API}articles`, data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}
+export const getAllArticle = async (sub) => {
+  try {
+    const url = sub === '' ? `articles?sub=${sub}` : 'articles';
+    const response = await axios.get(`${process.env.REACT_APP_API}${url}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}

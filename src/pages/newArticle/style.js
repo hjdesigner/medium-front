@@ -48,7 +48,7 @@ export const NewArticleInput = styled.input`
     font-weight: 400;
     padding: ${theme.spaces.small};
     width: 100%;
-    border: 2px solid ${theme.colors.redLight};
+    border: 1px solid ${theme.colors.gray};
     border-radius: 5px;
   `}
 `;
@@ -60,23 +60,11 @@ export const NewArticleSelect = styled.select`
     padding: ${theme.spaces.small};
     width: auto;
     min-width: 300px;
-    border: 2px solid ${theme.colors.redLight};
+    border: 1px solid ${theme.colors.gray};
     border-radius: 5px;
   `}
 `;
 export const NewArticleSelectOption = styled.option``;
-export const NewArticleTextArea = styled.textarea`
-  ${({ theme }) => css`
-    font-size: ${theme.fontSizes.fz1};
-    color: ${theme.colors.black};
-    font-weight: 400;
-    padding: ${theme.spaces.small};
-    width: 100%;
-    height: 500px;
-    border: 2px solid ${theme.colors.redLight};
-    border-radius: 5px;
-  `}
-`;
 export const NewArticleButton = styled.div`
   ${({ theme }) => css`
     margin: ${theme.spaces.xxLarge} 0;
@@ -96,4 +84,18 @@ export const NewArticleLink = styled(Link)`
     margin-left: ${theme.spaces.small};
     font-size: ${theme.fontSizes.fz0};
   `}
+`;
+export const NewArticlePreview = styled.div`
+  position: relative;
+  display: block;
+  width: 300px;
+  height: 300px;
+`;
+export const NewArticlePreviewImage = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
 `;
