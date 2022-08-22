@@ -20,6 +20,9 @@ const MyBookmarksTemplate = React.lazy(
 const LoginTemplate = React.lazy(
   () => import('pages/login'),
 );
+const EditTemplate = React.lazy(
+  () => import('pages/editArticle'),
+);
 
 function Main() {
   
@@ -30,6 +33,7 @@ function Main() {
         <Route path="/" element={<HomeTemplate />} />
         <Route path="/my-account" element={<MyAccountTemplate />} />
         <Route path="/new-article" element={<NewArticleTemplate />} />
+        <Route path="/edit-article/:id" element={<EditTemplate />} />
         <Route path="/article/:id" element={<ArticleTemplate />} />
         <Route path="/my-bookmarkes" element={<MyBookmarksTemplate />} />
         <Route path="/login" element={<LoginTemplate />} />

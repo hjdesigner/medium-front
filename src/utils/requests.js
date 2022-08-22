@@ -73,3 +73,27 @@ export const deleteArticle = async (id) => {
     return false
   }
 }
+export const getArticleById = async (id) => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API}articles/${id}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}
+export const putArticleById = async (id, data) => {
+  try {
+    const response = await axios.put(`${process.env.REACT_APP_API}articles/${id}`, data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useState, createContext } from 'react';
 import { element } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { postArticle, getAllArticle, deleteArticle, getIsAdmin } from 'utils';
+import { postArticle, getAllArticle, deleteArticle, getIsAdmin, getArticleById, putArticleById } from 'utils';
 
 const ArticlesContext = createContext();
 
@@ -22,6 +22,15 @@ function ArticlesProvider({ children }) {
   const changeImage = (value) => setImage(value);
   const changeCategory = (value) => setCategory(value);
 
+  const clearStateForm = () => {
+    setContent('');
+    setStatus('Draft');
+    setTitle('');
+    setResume('');
+    setImage('');
+    setCategory('');
+  }
+
   const handleSubmit = async (sub) => {
     const response = await postArticle({
       content,
@@ -34,12 +43,7 @@ function ArticlesProvider({ children }) {
     });
 
     if (response) {
-      setContent('');
-      setStatus('Draft');
-      setTitle('');
-      setResume('');
-      setImage('');
-      setCategory('');
+      clearStateForm();
       navigate('/my-account');
     }
   }
@@ -66,6 +70,37 @@ function ArticlesProvider({ children }) {
     }
   }
 
+  const getArticleEdit = async (id) => {
+    clearStateForm();
+    const response = await getArticleById(id);
+
+    if (response) {
+      setContent(response.content);
+      setStatus(response.status);
+      setTitle(response.title);
+      setResume(response.resume);
+      setImage(response.image);
+      setCategory(response.category);
+    }
+  }
+
+  const handleEditSubmit = async (id, sub) => {
+    const response = await putArticleById(id, {
+      content,
+      status,
+      title,
+      resume,
+      image,
+      category,
+      sub,
+    });
+
+    if (response) {
+      clearStateForm();
+      navigate('/my-account');
+    }
+  }
+
   return (
     <ArticlesContext.Provider
       value={{
@@ -85,6 +120,9 @@ function ArticlesProvider({ children }) {
         handleSubmit,
         requestArticles,
         requestDeletArticle,
+        getArticleEdit,
+        handleEditSubmit,
+        clearStateForm,
       }}
     >
       {children}

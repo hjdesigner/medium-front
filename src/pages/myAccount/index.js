@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useUser, useArticles } from 'hooks';
 import { EditLocation } from '@styled-icons/boxicons-solid';
@@ -7,6 +8,7 @@ import { Button } from 'components';
 import * as S from './style';
 
 const MyAccount = () => {
+  const navigate = useNavigate();
   const { isAuthenticated, user } = useAuth0();
   const {
     loadingIsAdmin,
@@ -30,6 +32,9 @@ const MyAccount = () => {
       isAdmin: value,
       sub: userInfo.sub,
     });
+  }
+  const handleOpenEdit = (id) => {
+    return navigate(`/edit-article/${id}`);
   }
 
   return (
@@ -79,7 +84,7 @@ const MyAccount = () => {
                         <S.MyAccountArticlesContentTh>
                           <S.MyAccountArticlesActions>
                             <S.MyAccountArticlesActionsButton>
-                              <EditLocation />
+                              <EditLocation onClick={() => handleOpenEdit(item.id)} />
                             </S.MyAccountArticlesActionsButton>
                             <S.MyAccountArticlesActionsButton>
                               <Delete onClick={() => requestDeletArticle(item.id, isAdmin?.isAdmin ? '' : user.sub)} />

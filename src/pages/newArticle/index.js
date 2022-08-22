@@ -24,9 +24,11 @@ const NewArticle = () => {
     changeImage,
     changeCategory,
     handleSubmit,
+    clearStateForm,
   } = useArticles();
   
   useEffect(() => {
+    clearStateForm();
     validateIsLogin(isAuthenticated, user);
     requestCategories();
   }, []);
