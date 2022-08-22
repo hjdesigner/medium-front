@@ -10,6 +10,7 @@ import {
   putArticleById,
   getAllPubishArticle,
   getAllCategoryArticle,
+  getArticleByLink,
 } from 'utils';
 
 const ArticlesContext = createContext();
@@ -27,6 +28,7 @@ function ArticlesProvider({ children }) {
   const [pageValue, setPageValue] = useState(1);
   const [showLoadMore, setShowLoadMore] = useState(true);
   const [featuredArticle, setFeaturedArticle] = useState({});
+  const [article, setArticle] = useState({});
 
   const changeContent = (value) => setContent(value);
   const changeStatus = (value) => setStatus(value);
@@ -44,7 +46,17 @@ function ArticlesProvider({ children }) {
     setCategory('');
   }
 
+  /* eslint-disable */
+  function friendlyUrl(text) {
+    return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/([^\w]+|\s+)/g, '-')
+      .replace(/\-\-+/g, '-')
+      .replace(/(ˆ-+|-+$)/, '')
+      .toLowerCase();
+  }
+
   const handleSubmit = async (sub) => {
+    const link = friendlyUrl(title);
     const response = await postArticle({
       content,
       status,
@@ -53,6 +65,7 @@ function ArticlesProvider({ children }) {
       image,
       category,
       sub,
+      link,
     });
 
     if (response) {
@@ -97,7 +110,9 @@ function ArticlesProvider({ children }) {
     }
   }
 
+  
   const handleEditSubmit = async (id, sub) => {
+    const link = friendlyUrl(title);
     const response = await putArticleById(id, {
       content,
       status,
@@ -106,6 +121,7 @@ function ArticlesProvider({ children }) {
       image,
       category,
       sub,
+      link,
     });
 
     if (response) {
@@ -128,6 +144,7 @@ function ArticlesProvider({ children }) {
     if (response) {
       if (response.length === 0) {
         setShowLoadMore(false);
+        setPageValue(1);
         return;
       }
       const newArticles = articlesHome.concat(response);
@@ -143,6 +160,19 @@ function ArticlesProvider({ children }) {
     }
   }
 
+  const requestArticleByLink = async (link) => {
+    const response = await getArticleByLink(link);
+    if (response) {
+      setArticle(response[0]);
+    }
+  }
+
+  const clearArticle = () => setArticle({});
+  const clearPageValue = () => {
+    setPageValue(1);
+    setShowLoadMore(true);
+  }
+
   return (
     <ArticlesContext.Provider
       value={{
@@ -156,6 +186,7 @@ function ArticlesProvider({ children }) {
         articlesHome,
         showLoadMore,
         featuredArticle,
+        article,
         changeContent,
         changeStatus,
         changeTitle,
@@ -171,6 +202,9 @@ function ArticlesProvider({ children }) {
         requestPublishArticles,
         loadMorePublishArticles,
         filterCategoryArticle,
+        requestArticleByLink,
+        clearArticle,
+        clearPageValue,
       }}
     >
       {children}

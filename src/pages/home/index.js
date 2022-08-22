@@ -16,9 +16,11 @@ const Home = () => {
     showLoadMore,
     featuredArticle,
     filterCategoryArticle,
+    clearPageValue,
   } = useArticles();
 
   useEffect(() => {
+    clearPageValue();
     validateIsLogin(isAuthenticated, user);
     requestCategories();
     requestPublishArticles(1);

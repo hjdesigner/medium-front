@@ -9,7 +9,7 @@ const ArticleCard = ({ item, size }) => {
         <S.ArticleTitle size={size}>{item.title}</S.ArticleTitle>
         <S.ArticleResume size={size}>{item.resume}</S.ArticleResume>
         <S.ArticleButtonContainer>
-          <S.ArticleButton to={item.link} size={size}>Read more</S.ArticleButton>
+          <S.ArticleButton to={`/article/${item.link}`} size={size}>Read more</S.ArticleButton>
         </S.ArticleButtonContainer>
       </S.ArticleContext>
       <S.ArticleImagemContainer size={size} data-testid="image">

@@ -11,4 +11,5 @@ export {
   putArticleById,
   getAllPubishArticle,
   getAllCategoryArticle,
+  getArticleByLink,
 } from './requests';

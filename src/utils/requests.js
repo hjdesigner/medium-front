@@ -121,3 +121,15 @@ export const getAllCategoryArticle = async (category) => {
     return false
   }
 }
+export const getArticleByLink = async (link) => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API}articles?link=${link}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}

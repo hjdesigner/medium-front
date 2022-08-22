@@ -1,28 +1,35 @@
 import React, { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useUser } from 'hooks';
+import { useUser, useArticles } from 'hooks';
 import { sanitize } from 'dompurify';
-import { articles } from 'mocks/articles';
+import { useParams } from 'react-router-dom';
 import * as S from './style';
 
 const Article = () => {
+  const { id } = useParams();
   const { isAuthenticated, user } = useAuth0();
   const { validateIsLogin } = useUser();
+  const { article, clearArticle, requestArticleByLink } = useArticles();
 
   useEffect(() => {
+    clearArticle();
     validateIsLogin(isAuthenticated, user);
+    requestArticleByLink(id);
   }, []);
 
   return (
     <S.ArticleElement>
       <S.ArticleContainer>
-        <S.ArticleTitle>{articles[0].title}</S.ArticleTitle>
+        <S.ArticleTitle>{article?.title}</S.ArticleTitle>
         <S.ArticleImage>
-          <S.ArticleImageElement src={articles[0].image} alt={articles[0].title} />
+          <S.ArticleImageElement
+            src={article?.image === '' ? 'https://img.freepik.com/psd-premium/minimal-empty-square-black-frameimagem-mock-up-pendurado-no-fundo-da-parede-branca-com-janela-luz-e-sombra-isolar-ilustracao-vetorial_144352-157.jpg?w=2000' : article?.image}
+            alt={article?.title}
+          />
         </S.ArticleImage>
         <S.ArticleText>
           {/* eslint-disable-next-line  */}
-          <div dangerouslySetInnerHTML={{ __html: sanitize(`${articles[0].content}`) }} />
+          <div dangerouslySetInnerHTML={{ __html: sanitize(`${article?.content}`) }} />
         </S.ArticleText>
       </S.ArticleContainer>
     </S.ArticleElement>
