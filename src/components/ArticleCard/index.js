@@ -13,7 +13,10 @@ const ArticleCard = ({ item, size }) => {
         </S.ArticleButtonContainer>
       </S.ArticleContext>
       <S.ArticleImagemContainer size={size} data-testid="image">
-        <S.ArticleImage src={item.image} alt={item.title} />
+        <S.ArticleImage
+          src={item.image === '' ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC7NClpQrO6iEc4y3gKTRIFEB3LDKN2J_mKQ&usqp=CAU' : item.image }
+          alt={item.title}
+        />
       </S.ArticleImagemContainer>
     </S.ArticleElement>
   );

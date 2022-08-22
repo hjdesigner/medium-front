@@ -1,7 +1,16 @@
 import React, { useState, createContext } from 'react';
 import { element } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import { postArticle, getAllArticle, deleteArticle, getIsAdmin, getArticleById, putArticleById } from 'utils';
+import {
+  postArticle,
+  getAllArticle,
+  deleteArticle,
+  getIsAdmin,
+  getArticleById,
+  putArticleById,
+  getAllPubishArticle,
+  getAllCategoryArticle,
+} from 'utils';
 
 const ArticlesContext = createContext();
 
@@ -14,6 +23,10 @@ function ArticlesProvider({ children }) {
   const [resume, setResume] = useState('');
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
+  const [articlesHome, setArticlesHome] = useState([]);
+  const [pageValue, setPageValue] = useState(1);
+  const [showLoadMore, setShowLoadMore] = useState(true);
+  const [featuredArticle, setFeaturedArticle] = useState({});
 
   const changeContent = (value) => setContent(value);
   const changeStatus = (value) => setStatus(value);
@@ -100,6 +113,35 @@ function ArticlesProvider({ children }) {
       navigate('/my-account');
     }
   }
+  const requestPublishArticles = async (page) => {
+    const response = await getAllPubishArticle(page);
+    if (response) {
+      setFeaturedArticle(response[0]);
+      setArticlesHome(response);
+    }
+  }
+  const loadMorePublishArticles = async () => {
+    const page = pageValue + 1;
+    setPageValue(page);
+    const response = await getAllPubishArticle(page);
+
+    if (response) {
+      if (response.length === 0) {
+        setShowLoadMore(false);
+        return;
+      }
+      const newArticles = articlesHome.concat(response);
+      setArticlesHome(newArticles);
+    }
+  }
+  const filterCategoryArticle = async (category) => {
+    const response = await getAllCategoryArticle(category);
+    if (response) {
+      setArticlesHome(response);
+      setShowLoadMore(false);
+      setPageValue(1);
+    }
+  }
 
   return (
     <ArticlesContext.Provider
@@ -111,6 +153,9 @@ function ArticlesProvider({ children }) {
         resume,
         image,
         category,
+        articlesHome,
+        showLoadMore,
+        featuredArticle,
         changeContent,
         changeStatus,
         changeTitle,
@@ -123,6 +168,9 @@ function ArticlesProvider({ children }) {
         getArticleEdit,
         handleEditSubmit,
         clearStateForm,
+        requestPublishArticles,
+        loadMorePublishArticles,
+        filterCategoryArticle,
       }}
     >
       {children}

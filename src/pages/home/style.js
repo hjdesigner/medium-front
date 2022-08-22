@@ -27,6 +27,7 @@ export const HomeArticlesContainer = styled.section`
   ${({ theme }) => css`
     margin: ${theme.spaces.extraLarge} 0;
     display: inline-block;
+    width: 100%;
   `}
 
 `;

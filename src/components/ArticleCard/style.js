@@ -107,6 +107,7 @@ export const ArticleImage = styled.img`
 `;
 export const ArticleContext = styled.div`
   ${({ theme, size }) => css`
+    min-width: 50%;
     ${size === 'large' ? modifiers.positionLargeContent(theme) : modifiers.positionSmallContent(theme)};
   `}
 `;

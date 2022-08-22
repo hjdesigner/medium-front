@@ -76,4 +76,11 @@ describe('Testing Article Card', () => {
       order: 1,
     });
   });
+  it('should render the default empty image', () => {
+    renderWithTheme(<ArticleCard item={articles[1]} size="small" />);
+    const image = screen.getByRole('img', {
+      name: /showcase your thought provoking topics and ideas/i
+    })
+    expect(image).toHaveAttribute('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC7NClpQrO6iEc4y3gKTRIFEB3LDKN2J_mKQ&usqp=CAU')
+  });
 });

@@ -97,3 +97,27 @@ export const putArticleById = async (id, data) => {
     return false
   }
 }
+export const getAllPubishArticle = async (page = 1) => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API}articles?status=Publish&p=${page}&l=4`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}
+export const getAllCategoryArticle = async (category) => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API}articles?category=${category}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}
