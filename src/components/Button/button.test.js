@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import { renderWithTheme } from 'utils/helperTest';
-import 'jest-styled-components'
+import 'jest-styled-components';
 import Button from './index';
 
 describe('Testing Button', () => {

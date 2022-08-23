@@ -169,3 +169,15 @@ export const deleteBookMark = async (id) => {
     return false
   }
 }
+export const getBookMarkByLink = async (link) => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API}bookmarks?link=${link}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}

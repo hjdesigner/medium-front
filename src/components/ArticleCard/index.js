@@ -4,10 +4,17 @@ import { Bookmark } from '@styled-icons/bootstrap';
 import * as S from './style';
 
 const ArticleCard = ({ item, size, handleClickBookmarks }) => {
+  const limitTitle = (text, size) => {
+    if (size === 'small' && text.length >= 70) {
+      return `${text.substring(0,70)}...`;
+    }
+    return text;
+  }
+
   return (
     <S.ArticleElement>
       <S.ArticleContext size={size} data-testid="content">
-        <S.ArticleTitle size={size}>{item.title}</S.ArticleTitle>
+        <S.ArticleTitle size={size}>{limitTitle(item.title, size)}</S.ArticleTitle>
         <S.ArticleResume size={size}>{item.resume}</S.ArticleResume>
         <S.ArticleButtonContainer>
           <S.ArticleButton to={`/article/${item.link}`} size={size}>Read more</S.ArticleButton>

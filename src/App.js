@@ -37,11 +37,11 @@ function App() {
   const { isLoading } = useAuth0();
     
   if (isLoading) {
-    return <Loader />;
+    return '';
   }
 
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<Loader fullPage={true} />}>
       <BrowserRouter>        
         <ThemeProvider theme={theme}>
           <GlobalStyle />

@@ -15,4 +15,5 @@ export {
   postBookMarks,
   getBookMark,
   deleteBookMark,
+  getBookMarkByLink,
 } from './requests';

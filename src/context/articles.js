@@ -29,6 +29,9 @@ function ArticlesProvider({ children }) {
   const [showLoadMore, setShowLoadMore] = useState(true);
   const [featuredArticle, setFeaturedArticle] = useState({});
   const [article, setArticle] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [loadingArticle, setLoadingArticle] = useState(true);
 
   const changeContent = (value) => setContent(value);
   const changeStatus = (value) => setStatus(value);
@@ -135,9 +138,11 @@ function ArticlesProvider({ children }) {
       setFeaturedArticle(response[0]);
       setArticlesHome(response);
     }
+    setLoading(false);
   }
   const loadMorePublishArticles = async () => {
     const page = pageValue + 1;
+    setLoadingMore(true);
     setPageValue(page);
     const response = await getAllPubishArticle(page);
 
@@ -145,11 +150,13 @@ function ArticlesProvider({ children }) {
       if (response.length === 0) {
         setShowLoadMore(false);
         setPageValue(1);
+        setLoadingMore(false);
         return;
       }
       const newArticles = articlesHome.concat(response);
       setArticlesHome(newArticles);
     }
+    setLoadingMore(false);
   }
   const filterCategoryArticle = async (category) => {
     const response = await getAllCategoryArticle(category);
@@ -165,6 +172,7 @@ function ArticlesProvider({ children }) {
     if (response) {
       setArticle(response[0]);
     }
+    setLoadingArticle(false);
   }
 
   const clearArticle = () => setArticle({});
@@ -187,6 +195,9 @@ function ArticlesProvider({ children }) {
         showLoadMore,
         featuredArticle,
         article,
+        loading,
+        loadingMore,
+        loadingArticle,
         changeContent,
         changeStatus,
         changeTitle,

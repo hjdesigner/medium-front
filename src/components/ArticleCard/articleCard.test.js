@@ -83,4 +83,10 @@ describe('Testing Article Card', () => {
     })
     expect(image).toHaveAttribute('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC7NClpQrO6iEc4y3gKTRIFEB3LDKN2J_mKQ&usqp=CAU')
   });
+  it('should render the long title', () => {
+    renderWithTheme(<ArticleCard item={articles[2]} size="small" handleClickBookmarks={() => {}} />);
+    expect(screen.getByRole('heading', {
+      name: /showcase your thought provoking topics and ideas showcase your thought\.\.\./i
+    })).toBeInTheDocument();
+  });
 });
