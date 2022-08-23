@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { theme } from 'utils';
-import { UserProvider, CategoriesProvider, ArticlesProvider } from 'context';
+import { UserProvider, CategoriesProvider, ArticlesProvider, BookmarksProvider } from 'context';
 import { Loader } from 'components';
 
 const MainPage = lazy(() => import('pages/main'));
@@ -48,7 +48,9 @@ function App() {
           <UserProvider>
             <CategoriesProvider>
               <ArticlesProvider>
-                <MainPage />
+                <BookmarksProvider>
+                  <MainPage />
+                </BookmarksProvider>
               </ArticlesProvider>              
             </CategoriesProvider>            
           </UserProvider>          

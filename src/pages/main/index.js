@@ -35,7 +35,7 @@ function Main() {
         <Route path="/new-article" element={<NewArticleTemplate />} />
         <Route path="/edit-article/:id" element={<EditTemplate />} />
         <Route path="/article/:id" element={<ArticleTemplate />} />
-        <Route path="/my-bookmarkes" element={<MyBookmarksTemplate />} />
+        <Route path="/my-bookmarks" element={<MyBookmarksTemplate />} />
         <Route path="/login" element={<LoginTemplate />} />
       </Routes>
       <Footer />

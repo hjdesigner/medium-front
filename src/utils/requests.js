@@ -133,3 +133,39 @@ export const getArticleByLink = async (link) => {
     return false
   }
 }
+export const postBookMarks = async (data) => {
+  try {
+    const response = await axios.post(`${process.env.REACT_APP_API}bookmarks`, data, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}
+export const getBookMark = async (sub) => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API}bookmarks?sub=${sub}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}
+export const deleteBookMark = async (id) => {
+  try {
+    const response = await axios.delete(`${process.env.REACT_APP_API}bookmarks/${id}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    return response.data
+  } catch (error) {
+    return false
+  }
+}

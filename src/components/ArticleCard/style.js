@@ -120,3 +120,26 @@ export const ArticleImagemContainer = styled.div`
     ${size === 'large' ? modifiers.largeImage() : modifiers.smallImage()};
   `}
 `;
+export const ArticleButtonBookmarks = styled.button`
+  ${({ theme }) => css`
+    position: absolute;
+    border: 0;
+    background-color: ${theme.colors.grays};
+    width: 25px;
+    height: 25px;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+    border-radius: 5px;
+
+    svg {
+      width: 15px;
+    }
+
+    &:hover {
+      background-color: ${theme.colors.redLight};
+    }
+  `}
+`;

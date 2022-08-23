@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { ArticleCard } from 'components';
-import { articles } from 'mocks/articles';
-import { useUser } from 'hooks';
+import { useUser, useBookmarks } from 'hooks';
 import * as S from './style';
 
 const MyBookmarks = () => {
   const { isAuthenticated, user } = useAuth0();
   const { validateIsLogin } = useUser();
+  const { saveBookmark, bookmarks, requestBookMark } = useBookmarks();
   
   useEffect(() => {
     validateIsLogin(isAuthenticated, user);
+    requestBookMark(user.sub);
   }, []);
 
   return (
@@ -19,7 +20,9 @@ const MyBookmarks = () => {
         <S.MyBookmarkesTitle>My Bookmarks</S.MyBookmarkesTitle>
         <S.MyBookmarksArticlesContainer>
           <S.MyBookmarksArticlesUl>
-            {articles.map((item) => <S.MyBookmarksArticlesli key={item.id}><ArticleCard item={item} size="small" /></S.MyBookmarksArticlesli>)}
+            {bookmarks.map((item) => (
+              <S.MyBookmarksArticlesli key={item.id}><ArticleCard item={item} size="small" handleClickBookmarks={() => saveBookmark(item, 'remove', user.sub)} /></S.MyBookmarksArticlesli>)
+            )}
           </S.MyBookmarksArticlesUl>
         </S.MyBookmarksArticlesContainer>
       </S.MyBookmarksContainer>

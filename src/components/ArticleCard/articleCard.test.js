@@ -6,7 +6,7 @@ import ArticleCard from './index';
 
 describe('Testing Article Card', () => {
 	it('should render the large size', () => {
-    renderWithTheme(<ArticleCard item={articles[0]} size="large" />);
+    renderWithTheme(<ArticleCard item={articles[0]} size="large" handleClickBookmarks={() => {}} />);
     
     expect(screen.getByRole('heading', {
       name: /showcase your thought provoking topics and ideas/i
@@ -42,7 +42,7 @@ describe('Testing Article Card', () => {
     });
   });
   it('should render the small size', () => {
-    renderWithTheme(<ArticleCard item={articles[0]} size="small" />);
+    renderWithTheme(<ArticleCard item={articles[0]} size="small" handleClickBookmarks={() => {}} />);
     
     expect(screen.getByRole('heading', {
       name: /showcase your thought provoking topics and ideas/i
@@ -77,7 +77,7 @@ describe('Testing Article Card', () => {
     });
   });
   it('should render the default empty image', () => {
-    renderWithTheme(<ArticleCard item={articles[1]} size="small" />);
+    renderWithTheme(<ArticleCard item={articles[1]} size="small" handleClickBookmarks={() => {}} />);
     const image = screen.getByRole('img', {
       name: /showcase your thought provoking topics and ideas/i
     })

@@ -1,8 +1,9 @@
 import React from 'react';
-import { object, string } from 'prop-types';
+import { func, object, string } from 'prop-types';
+import { Bookmark } from '@styled-icons/bootstrap';
 import * as S from './style';
 
-const ArticleCard = ({ item, size }) => {
+const ArticleCard = ({ item, size, handleClickBookmarks }) => {
   return (
     <S.ArticleElement>
       <S.ArticleContext size={size} data-testid="content">
@@ -13,6 +14,7 @@ const ArticleCard = ({ item, size }) => {
         </S.ArticleButtonContainer>
       </S.ArticleContext>
       <S.ArticleImagemContainer size={size} data-testid="image">
+        <S.ArticleButtonBookmarks onClick={handleClickBookmarks}><Bookmark /></S.ArticleButtonBookmarks>
         <S.ArticleImage
           src={item.image === '' ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC7NClpQrO6iEc4y3gKTRIFEB3LDKN2J_mKQ&usqp=CAU' : item.image }
           alt={item.title}
@@ -25,6 +27,7 @@ const ArticleCard = ({ item, size }) => {
 ArticleCard.propTypes = {
 	item: object.isRequired,
 	size: string.isRequired,
+  handleClickBookmarks: func.isRequired,
 };
 
 export default ArticleCard;

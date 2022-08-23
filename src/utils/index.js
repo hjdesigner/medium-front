@@ -12,4 +12,7 @@ export {
   getAllPubishArticle,
   getAllCategoryArticle,
   getArticleByLink,
+  postBookMarks,
+  getBookMark,
+  deleteBookMark,
 } from './requests';
