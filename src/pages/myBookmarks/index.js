@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { ArticleCard } from 'components';
+import { ArticleCard, EmptyContent } from 'components';
 import { useUser, useBookmarks } from 'hooks';
 import * as S from './style';
 
@@ -23,6 +23,7 @@ const MyBookmarks = () => {
             {bookmarks.map((item) => (
               <S.MyBookmarksArticlesli key={item.id}><ArticleCard item={item} size="small" handleClickBookmarks={() => saveBookmark(item, 'remove', user.sub)} /></S.MyBookmarksArticlesli>)
             )}
+            {!bookmarks.length && <EmptyContent>Empty content, select an article to read later</EmptyContent>}
           </S.MyBookmarksArticlesUl>
         </S.MyBookmarksArticlesContainer>
       </S.MyBookmarksContainer>

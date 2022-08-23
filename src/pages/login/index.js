@@ -11,6 +11,7 @@ const Login = () => {
       <S.LoginContainer>
         <S.LoginAction>
           <S.LoginTitle>Login</S.LoginTitle>
+          <S.LoginText>To enjoy the content, login or create your account.</S.LoginText>
           <Button handleClick={() => loginWithRedirect()} format="secondary">Log In or Register</Button>
         </S.LoginAction>
       </S.LoginContainer>

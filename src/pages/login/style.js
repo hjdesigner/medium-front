@@ -28,3 +28,12 @@ export const LoginAction = styled.div`
   margin: 0 auto;
   text-align: center;
 `;
+export const LoginText = styled.p`
+  ${({ theme }) => css`
+    font-size: ${theme.fontSizes.fz1};
+    color: ${theme.colors.black};
+    font-weight: 400;
+    margin-bottom: ${theme.spaces.medium};
+    width: 100%;
+  `}
+`;

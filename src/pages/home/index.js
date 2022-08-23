@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, ArticleCard } from 'components';
+import { Button, ArticleCard, EmptyContent } from 'components';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useUser, useArticles, useCategories, useBookmarks } from 'hooks';
 import * as S from './style';
@@ -45,13 +45,19 @@ const Home = () => {
         </S.HomeCategories>
         <S.HomeArticlesContainer>
           <S.HomeArticlesUl>
-            {articlesHome.length
-              ? articlesHome.map((item) => (
-                <S.HomeArticlesli key={item.id}><ArticleCard item={item} size="small" handleClickBookmarks={() => saveBookmark(item, 'save', user.sub)} /></S.HomeArticlesli>)
-              ): ''}
+            {articlesHome.length !== 0 && articlesHome.map((item) => (
+              <S.HomeArticlesli key={item.id}>
+                <ArticleCard
+                  item={item}
+                  size="small"
+                  handleClickBookmarks={() => saveBookmark(item, 'save', user.sub)}
+                />
+              </S.HomeArticlesli>)                
+            )}
+            {articlesHome.length === 0 && <EmptyContent>Empty content, publish a new article.</EmptyContent>}
           </S.HomeArticlesUl>
         </S.HomeArticlesContainer>
-        {showLoadMore && (
+        {showLoadMore && articlesHome.length != 0 && (
           <S.HomeLoadMore>
             <Button format="secondary" handleClick={() => loadMorePublishArticles()}>Load more</Button>
           </S.HomeLoadMore>
