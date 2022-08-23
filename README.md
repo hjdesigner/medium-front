@@ -98,3 +98,5 @@ At commit time, the test and lint command is run to ensure that nothing was brok
 - After making the changes, run the test commands to ensure that nothing was broken;
 - Open a pull-request for the main branch;
 
+
+Note: For security reasons, after performing the test validation, I will revoke access to api and Auth0
